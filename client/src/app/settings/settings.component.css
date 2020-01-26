@@ -1,0 +1,21 @@
+.settingswindow
+{   
+    padding-top: 10px;
+}
+
+.mybutton
+{
+    width: 100%;
+}
+
+.buttonscol
+{
+    padding-left: 10px;
+}
+
+.settingdiv
+{
+    margin-left: 10px;
+    margin-right: 15px;
+    padding: 10px;
+}
