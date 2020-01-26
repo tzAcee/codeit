@@ -28,7 +28,7 @@ export class SettingsComponent implements OnInit {
   {
     if (this.streaming)
     {
-      this.fileComp.start(new MediaStream([0]));
+      this.fileComp.start(null);
     }
     else
     {
