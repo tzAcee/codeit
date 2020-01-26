@@ -11,7 +11,7 @@ export class SettingsComponent implements OnInit {
   streaming: boolean;
   state: SETTINGSTATE = 0;
 
-  constructor(private fileComp: StreamService)
+  constructor(private streamService: StreamService)
   {
     
   }
@@ -28,11 +28,9 @@ export class SettingsComponent implements OnInit {
   {
     if (this.streaming)
     {
-      this.fileComp.start(null);
     }
     else
     {
-      this.fileComp.stopRecording();
     }
   }
 

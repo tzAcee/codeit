@@ -9,13 +9,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { StartpageComponent } from './startpage/startpage.component';
 import { SettingsComponent } from './settings/settings.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     StartpageComponent,
-    SettingsComponent
+    SettingsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,35 +1,55 @@
 import { Injectable } from '@angular/core';
-import * as RecordRTC from 'recordrtc';
+import axios from 'axios';
+import config from '../../../server/config/default';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StreamService {
 
-  record;
+  live_streams: [];
+  state;
 
-  constructor() { }
-
-  start(stream: MediaStream)
+  constructor()
   {
-    var options = {
-      mimeType: "audio/wav",
-      numberOfAudioChannels: 1
-
-    };
-
-    var StereoAudioRecorder = RecordRTC.StereoAudioRecorder;
-    this.record = new StereoAudioRecorder(stream, options);
-    this.record.record();
+    this.state = {
+      life_streams: []
+    }
   }
 
-  stopRecording() {
-    this.record.stop(this.process.bind(this));
+  getLiveStreams()
+  {
+    let url = 'http://127.0.0.1:' + config.rtmp_server.http.port + '/api/streams'; 
+    console.log(url);
+    axios.get(url)
+      .then(res => {
+        let streams = res.data;
+        if (typeof (streams['live'] !== 'undefined')) {
+          console.log(streams['live']);
+        }
+      });
   }
 
-  process(blob) {
-    // Do whatever Â you got the blob
-    console.log(URL.createObjectURL(blob));
-}
+  setState(st, a)
+  {
+    this.state = st;
+    console.log(this.state);
+  }
+
+  getStreamsInfo(live_streams)
+  {
+    axios.get('/streams/info', {
+      params: {
+          streams: live_streams
+      }
+  }).then(res => {
+      this.setState({
+          live_streams: res.data
+      }, () => {
+          console.log(this.state);
+      });
+  });
+  }
+
 }
 
