@@ -10,6 +10,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { StartpageComponent } from './startpage/startpage.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {VgCoreModule} from 'videogular2/compiled/core';
+import {VgControlsModule} from 'videogular2/compiled/controls';
+import {VgOverlayPlayModule} from 'videogular2/compiled/overlay-play';
+import {VgBufferingModule} from 'videogular2/compiled/buffering';
 
 
 @NgModule({
@@ -26,6 +30,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MaterialModule,
     FlexLayoutModule,
     FormsModule, ReactiveFormsModule,
+    VgBufferingModule, VgOverlayPlayModule, VgControlsModule, VgCoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
